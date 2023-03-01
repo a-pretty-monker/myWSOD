@@ -1,0 +1,200 @@
+Called with args:
+Namespace(batch_size=1, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=False)
+effective_batch_size = batch_size * iter_size = 4 * 4
+Adaptive config changes:
+    effective_batch_size: 4 --> 16
+    NUM_GPUS:             4 --> 4
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.16s)
+creating index...
+index created!
+INFO json_dataset.py: 130: Loading cached gt_roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_gt_roidb.pkl
+INFO json_dataset.py: 219: Loading proposals from: data/selective_search_data/voc_2007_trainval.pkl
+INFO json_dataset.py: 227:  1/5011
+INFO json_dataset.py: 227:  2501/5011
+INFO json_dataset.py: 227:  5001/5011
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 235: 10022 roidb entries
+INFO train_net_step.py: 236: Takes 5.64 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+INFO train_net_step.py: 376: Training starts !
+INFO net.py:  72: Changing learning rate 0.000000 -> 0.000333
+[Feb27-21-19-13_amax_step][vgg16_voc2007_ours.yaml][Step 1 / 17500]
+		loss: 0.368988, lr: 0.000333 time: 88.937706, eta: 18 days, 0:20:09
+		loss_im_cls: 0.268492, refine_loss0: 0.000447, refine_loss1: 0.028102, refine_loss2: 0.024140, cls_loss: 0.025100, bbox_loss: 0.022708
+INFO train_net_step.py: 440: Save ckpt on exception ...
+INFO train_net_step.py: 140: save model: Outputs/vgg16_voc2007_ours/Feb27-21-19-13_amax_step/ckpt/model_step1.pth
+INFO train_net_step.py: 442: Save ckpt done.
+Traceback (most recent call last):
+  File "tools/train_net_step.py", line 422, in main
+    net_outputs = pcl(**input_data)
+  File "/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/data/lijiaxin/myWSOD/lib/nn/parallel/data_parallel.py", line 111, in forward
+    outputs = self.parallel_apply(replicas, inputs, kwargs)
+  File "/data/lijiaxin/myWSOD/lib/nn/parallel/data_parallel.py", line 139, in parallel_apply
+    return parallel_apply(replicas, inputs, kwargs, self.device_ids[:len(replicas)])
+  File "/data/lijiaxin/myWSOD/lib/nn/parallel/parallel_apply.py", line 59, in parallel_apply
+    thread.join()
+  File "/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/threading.py", line 1011, in join
+    self._wait_for_tstate_lock()
+  File "/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/threading.py", line 1027, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+  File "/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 1675411) is killed by signal: Killed. 
+
+Called with args:
+Namespace(batch_size=1, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=False)
+effective_batch_size = batch_size * iter_size = 4 * 4
+Adaptive config changes:
+    effective_batch_size: 4 --> 16
+    NUM_GPUS:             4 --> 4
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.16s)
+creating index...
+index created!
+INFO json_dataset.py: 130: Loading cached gt_roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_gt_roidb.pkl
+INFO json_dataset.py: 219: Loading proposals from: data/selective_search_data/voc_2007_trainval.pkl
+INFO json_dataset.py: 227:  1/5011
+INFO json_dataset.py: 227:  2501/5011
+INFO json_dataset.py: 227:  5001/5011
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 235: 10022 roidb entries
+INFO train_net_step.py: 236: Takes 5.62 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+INFO train_net_step.py: 376: Training starts !
+INFO net.py:  72: Changing learning rate 0.000000 -> 0.000333
+Called with args:
+Namespace(batch_size=1, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=False)
+effective_batch_size = batch_size * iter_size = 4 * 4
+Adaptive config changes:
+    effective_batch_size: 4 --> 16
+    NUM_GPUS:             4 --> 4
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.16s)
+creating index...
+index created!
+INFO json_dataset.py: 130: Loading cached gt_roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_gt_roidb.pkl
+INFO json_dataset.py: 219: Loading proposals from: data/selective_search_data/voc_2007_trainval.pkl
+INFO json_dataset.py: 227:  1/5011
+INFO json_dataset.py: 227:  2501/5011
+INFO json_dataset.py: 227:  5001/5011
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 235: 10022 roidb entries
+INFO train_net_step.py: 236: Takes 5.63 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+INFO train_net_step.py: 376: Training starts !
+INFO net.py:  72: Changing learning rate 0.000000 -> 0.000333
+Called with args:
+Namespace(batch_size=1, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=False)
+effective_batch_size = batch_size * iter_size = 4 * 4
+Adaptive config changes:
+    effective_batch_size: 4 --> 16
+    NUM_GPUS:             4 --> 4
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.17s)
+creating index...
+index created!
+INFO json_dataset.py: 130: Loading cached gt_roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_gt_roidb.pkl
+INFO json_dataset.py: 219: Loading proposals from: data/selective_search_data/voc_2007_trainval.pkl
+INFO json_dataset.py: 227:  1/5011
+INFO json_dataset.py: 227:  2501/5011
+INFO json_dataset.py: 227:  5001/5011
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 235: 10022 roidb entries
+INFO train_net_step.py: 236: Takes 5.80 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+INFO train_net_step.py: 376: Training starts !
+INFO net.py:  72: Changing learning rate 0.000000 -> 0.000333
+Called with args:
+Namespace(batch_size=1, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=False)
+effective_batch_size = batch_size * iter_size = 4 * 4
+Adaptive config changes:
+    effective_batch_size: 4 --> 16
+    NUM_GPUS:             4 --> 4
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.16s)
+creating index...
+index created!
+INFO json_dataset.py: 130: Loading cached gt_roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_gt_roidb.pkl
+INFO json_dataset.py: 219: Loading proposals from: data/selective_search_data/voc_2007_trainval.pkl
+INFO json_dataset.py: 227:  1/5011
+INFO json_dataset.py: 227:  2501/5011
+INFO json_dataset.py: 227:  5001/5011
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 235: 10022 roidb entries
+INFO train_net_step.py: 236: Takes 5.62 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+INFO train_net_step.py: 376: Training starts !
+INFO net.py:  72: Changing learning rate 0.000000 -> 0.000333
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
+Called with args:
+Namespace(batch_size=None, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=True)
+Traceback (most recent call last):
+  File "tools/train_net_step.py", line 457, in <module>
+    main()
+  File "tools/train_net_step.py", line 186, in main
+    assert (args.batch_size % cfg.NUM_GPUS) == 0, \
+AssertionError: batch_size: 1, NUM_GPUS: 4

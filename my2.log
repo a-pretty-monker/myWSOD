@@ -1,0 +1,28 @@
+nohup: ignoring input
+Called with args:
+Namespace(batch_size=None, cfg_file='configs/vgg16_voc2007_ours.yaml', cuda=True, dataset='voc2007', disp_interval=20, iter_size=4, load_ckpt=None, load_detectron=None, lr=None, lr_decay_gamma=None, no_save=False, num_workers=4, optimizer=None, resume=False, set_cfgs=[], start_step=0, use_tfboard=True)
+effective_batch_size = batch_size * iter_size = 1 * 4
+Adaptive config changes:
+    effective_batch_size: 1 --> 4
+    NUM_GPUS:             1 --> 1
+    IMS_PER_BATCH:        1 --> 1
+Adjust BASE_LR linearly according to batch_size change:
+    BASE_LR: 0.001 --> 0.001
+Adjust SOLVER.STEPS and SOLVER.MAX_ITER linearly based on effective_batch_size change:
+    SOLVER.STEPS: [0, 50000] --> [0, 12500]
+    SOLVER.MAX_ITER: 70000 --> 17500
+Number of data loading threads: 4
+loading annotations into memory...
+Done (t=0.16s)
+creating index...
+index created!
+INFO json_dataset.py: 128: Loading cached roidb from /data/lijiaxin/myWSOD/data/cache/voc_2007_trainval_me_roidb.pkl
+INFO roidb.py:  47: Appending horizontally-flipped training examples...
+INFO roidb.py:  49: Loaded dataset: voc_2007_trainval
+INFO roidb.py: 112: Filtered 0 roidb entries: 10022 -> 10022
+INFO roidb.py:  65: Computing image aspect ratios and ordering the ratios...
+INFO roidb.py:  67: done
+INFO train_net_step.py: 237: 10022 roidb entries
+INFO train_net_step.py: 238: Takes 1.15 sec(s) to construct roidb
+/data/lijiaxin/anaconda3/envs/torch17/lib/python3.8/site-packages/mmcv/__init__.py:20: UserWarning: On January 1, 2023, MMCV will release v2.0.0, in which it will remove components related to the training process and add a data transformation module. In addition, it will rename the package names mmcv to mmcv-lite and mmcv-full to mmcv. See https://github.com/open-mmlab/mmcv/blob/master/docs/en/compatibility.md for more details.
+  warnings.warn(
